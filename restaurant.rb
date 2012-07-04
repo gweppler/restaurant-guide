@@ -1,3 +1,4 @@
+
 class Restaurant
   
   @@filepath = nil
@@ -11,8 +12,8 @@ class Restaurant
       return true
     else
       return false
-  end
-end
+    end # this should be indented
+  end # this should be indented
   
   def self.file_usable?
     # create the restaurant file
