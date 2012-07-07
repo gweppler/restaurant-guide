@@ -33,9 +33,6 @@ class Guide
     conclusion
   end
   
-  def introduction
-  end 
-
   def get_action
     action = nil 
     # Keep asking for user input until we get a valid action
@@ -119,7 +116,12 @@ class Guide
     puts "This is an interactive guide to help you find the food you are craving.\n\n"
   end
   
+  def instruction
+    # TODO: fill in this method
+  end
+  
   def conclusion
+    # TODO: fill in this method
   end
   
   private
