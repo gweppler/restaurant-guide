@@ -9,16 +9,16 @@ class Restaurant
   
   attr_accessor :name, :cuisine, :price
   
-  def self.file_exists?=
+  def self.file_exists?
     # class should know if the restaurant file exists
     if @@filepath && File.exists?(@@filepath)
       return true
     else
       return false
-    end # this should be indented
-  end # this should be indented
+    end
+  end
   
-  def self.file_usable?=
+  def self.file_usable?
     # create the restaurant file
     return false unless @@filepath
     return false unless File.exists?(@@filepath)
@@ -27,7 +27,7 @@ class Restaurant
     return true
   end
   
-  def self.create_file=
+  def self.create_file
     # create the restaurant file
     File.open(@@filepath, 'w') unless file_exists?
     return file_usable?
@@ -72,7 +72,7 @@ class Restaurant
   end
   
   def save
-    return false unless Restauran.file_usable?
+    return false unless Restaurant.file_usable?
     File.open(@@filepath, 'a') do |file|
       file.puts "#{[@name, @cuisine, @price].join("\t")}\n"
     end

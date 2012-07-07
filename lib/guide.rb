@@ -1,17 +1,11 @@
-#!/usr/bin/env ruby
-# ^ you forgot to add the hashbang. 
-
-# you'll want to make this file executable with:
-# chmod a+x restaurant_guide.rb
-
-# also, style and readability. keep it in your mind...
-
 require 'restaurant' # added a new line after this require statement to improve readability
 require 'support/string_extend'
+
 class Guide
-  class config
+  class Config
     @@actions = ['list', 'add', 'quit']
     def self.actions; @@actions; end
+  end
   
   def initialize(path=nil)
     # locate the restaurant text file at path
@@ -39,15 +33,13 @@ class Guide
     conclusion
   end
   
-  def instruction
-    puts "\n\n<<< Welcome to the Food Finder >>>\n\n"
-    puts "This is an interactive guide to help you find the food you are craving.\n\n"
-  end # you didnt 'end' this 'instruction' method
+  def introduction
+  end 
 
   def get_action
     action = nil 
     # Keep asking for user input until we get a valid action
-    until guide::Config.actions.incluse?(action)
+    until Guide::Config.actions.include?(action)
       puts "Actions: " + Guide::Config.actions.join(", ") if action
       print "> "
       user_response = gets.chomp
@@ -112,7 +104,7 @@ class Guide
     end
   end
   
-  def add=
+  def add
     output_action_header("Add a restaurant")
     restaurant = Restaurant.build_using_questions
     if restaurant.save
@@ -120,12 +112,15 @@ class Guide
     else
       puts "\nSave Error: Restaurant not added\n\n"
     end
-    
   end
 
-  def introduction=
-    
-  def conclusion=
+  def introduction
+    puts "\n\n<<< Welcome to the Food Finder >>>\n\n"
+    puts "This is an interactive guide to help you find the food you are craving.\n\n"
+  end
+  
+  def conclusion
+  end
   
   private
   
@@ -144,9 +139,9 @@ class Guide
       line << " " + rest.formatted_price.rjust(6)
       puts line
     end
-    puts "No listing found" if restaurants.empty
+    puts "No listing found" if restaurants.empty?
     puts "-" * 60
   end
     
-end # you didnt 'end' this 'Guide' class
+end 
 

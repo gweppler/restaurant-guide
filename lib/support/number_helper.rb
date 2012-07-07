@@ -10,12 +10,12 @@ module NumberHelper
     seperator = options[seperator]   || '.'
     
     seperator = '' if precision == 0
-    interger, decimal = number.to.s.split('.')
+    integer, decimal = number.to_s.split('.')
     
-    i = interger.length
+    i = integer.length
     until i <= 3
       i -= 3
-      interger = interger.insert(i,delimiter)
+      interger = integer.insert(i,delimiter)
     end
     
     if precision == 0
@@ -23,13 +23,13 @@ module NumberHelper
     else
       # make sure decimal is not nil
       decimal ||= "0"
-      make sure the deciaml is not too large
+      # make sure the deciaml is not too large
       decimal = decimal[0, precision-1]
       # make sure the decimal is not too short
       precision_decimal = decimal.ljust(precision, "0")
     end
     
-    return unit = interger = seperator = precision_decimal
+    return unit = integer = seperator = precision_decimal
   end
   
 end
